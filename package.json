@@ -1,0 +1,17 @@
+{
+  "name": "com.kmiecis.ui.commons",
+  "displayName": "Unity UI Commons",
+  "author": {
+    "name": "Kmiecis",
+    "email": "slawekkmiecik@gmail.com"
+  },
+  "description": "Scripts library of methods that Unity UI should have by default",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kmiecis/Unity-Package-UI-Commons.git"
+  },
+  "dependencies": {
+    "com.unity.ugui": "1.0.0"
+  }
+}
