@@ -7,9 +7,9 @@ namespace Common.UI
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Drag Handler")]
     public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        [SerializeField] private UnityEvent<PointerEventData> _onDragBegan = new UnityEvent<PointerEventData>();
-        [SerializeField] private UnityEvent<PointerEventData> _onDragging = new UnityEvent<PointerEventData>();
-        [SerializeField] private UnityEvent<PointerEventData> _onDragEnded = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onDragBegan = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onDragging = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onDragEnded = new UnityEvent<PointerEventData>();
 
         private bool _isDragging;
         private PointerEventData _cache;

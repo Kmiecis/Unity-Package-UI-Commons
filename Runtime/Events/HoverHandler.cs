@@ -7,8 +7,8 @@ namespace Common.UI
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Hover Handler")]
     public class HoverHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] private UnityEvent<PointerEventData> _onHoverBegan;
-        [SerializeField] private UnityEvent<PointerEventData> _onHoverEnded;
+        [SerializeField] protected UnityEvent<PointerEventData> _onHoverBegan = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onHoverEnded = new UnityEvent<PointerEventData>();
 
         private bool _isHovering;
         private PointerEventData _cache;

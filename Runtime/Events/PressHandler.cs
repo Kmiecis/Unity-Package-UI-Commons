@@ -7,8 +7,8 @@ namespace Common.UI
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Press Handler")]
     public class PressHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        [SerializeField] private UnityEvent<PointerEventData> _onPressBegan;
-        [SerializeField] private UnityEvent<PointerEventData> _onPressEnded;
+        [SerializeField] protected UnityEvent<PointerEventData> _onPressBegan = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onPressEnded = new UnityEvent<PointerEventData>();
 
         private bool _isPressed;
         private PointerEventData _cache;

@@ -7,7 +7,7 @@ namespace Common.UI
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Click Handler")]
     public class ClickHandler : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private UnityEvent<PointerEventData> _onClick;
+        [SerializeField] protected UnityEvent<PointerEventData> _onClick = new UnityEvent<PointerEventData>();
 
         public UnityEvent<PointerEventData> OnClick
             => _onClick;
