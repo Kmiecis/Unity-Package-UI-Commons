@@ -4,6 +4,7 @@ using UnityEngine.UI;
 namespace Common.UI
 {
     [RequireComponent(typeof(CanvasRenderer))]
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Clear Graphic")]
     public class ClearGraphic : Graphic
     {
         public override void SetMaterialDirty()
