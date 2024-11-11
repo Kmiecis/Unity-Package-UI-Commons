@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Common.UI
 {
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Click Handler")]
     public class ClickHandler : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private UnityEvent<PointerEventData> _onClick;
