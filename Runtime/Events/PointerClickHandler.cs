@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 namespace Common.UI
 {
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Click Handler")]
-    public class ClickHandler : PointerHandlerBase, IPointerClickHandler
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(PointerClickHandler))]
+    public class PointerClickHandler : PointerHandlerBase, IPointerClickHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onClick = new UnityEvent<PointerEventData>();
 

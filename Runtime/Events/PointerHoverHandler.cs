@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 namespace Common.UI
 {
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Hover Handler")]
-    public class HoverHandler : PointerHandlerBase, IPointerEnterHandler, IPointerExitHandler
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(PointerHoverHandler))]
+    public class PointerHoverHandler : PointerHandlerBase, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onHoverBegan = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onHoverEnded = new UnityEvent<PointerEventData>();

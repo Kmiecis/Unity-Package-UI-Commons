@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 namespace Common.UI
 {
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + "Drag Handler")]
-    public class DragHandler : PointerHandlerBase, IBeginDragHandler, IDragHandler, IEndDragHandler
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(PointerDragHandler))]
+    public class PointerDragHandler : PointerHandlerBase, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onDragBegan = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onDragging = new UnityEvent<PointerEventData>();
