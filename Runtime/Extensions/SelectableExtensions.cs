@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Common.UI
+namespace Common.UI.Extensions
 {
     public static class SelectableExtensions
     {
