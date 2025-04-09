@@ -5,12 +5,22 @@ namespace Common.UI.Extensions
 {
     public static class SelectableExtensions
     {
-        public static void Unselect(this Selectable self)
+        public static bool IsSelected(this Selectable self)
         {
-            if (EventSystem.current == null || EventSystem.current.currentSelectedGameObject != self.gameObject)
+            var system = EventSystem.current;
+            if (system == null)
+                return false;
+
+            return system.currentSelectedGameObject == self.gameObject;
+        }
+
+        public static void Deselect(this Selectable self)
+        {
+            var system = EventSystem.current;
+            if (system == null || system.currentSelectedGameObject != self.gameObject)
                 return;
 
-            EventSystem.current.SetSelectedGameObject(null);
+            system.SetSelectedGameObject(null);
         }
     }
 }

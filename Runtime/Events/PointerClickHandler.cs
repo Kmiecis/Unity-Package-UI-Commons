@@ -7,21 +7,21 @@ namespace Common.UI
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(PointerClickHandler))]
     public class PointerClickHandler : PointerHandlerBase, IPointerClickHandler
     {
-        [SerializeField] protected UnityEvent<PointerEventData> _onClick = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onClicked = new UnityEvent<PointerEventData>();
 
-        public UnityEvent<PointerEventData> OnClick
-            => _onClick;
+        public UnityEvent<PointerEventData> OnClicked
+            => _onClicked;
 
         public void OnPointerClick(PointerEventData data)
         {
-            _onClick.Invoke(data);
+            _onClicked.Invoke(data);
 
             UseIfNecessary(data);
         }
 
         public void RemoveAllListeners()
         {
-            _onClick.RemoveAllListeners();
+            _onClicked.RemoveAllListeners();
         }
 
         #region Unity
