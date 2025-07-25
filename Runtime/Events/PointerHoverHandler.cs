@@ -34,10 +34,10 @@ namespace Common.UI
 
         public void OnPointerExit(PointerEventData data)
         {
+            _isHovering = false;
+
             _onHoverEnded.Invoke(data);
             _cache = data;
-
-            _isHovering = false;
 
             UseIfNecessary(data);
         }

@@ -46,10 +46,10 @@ namespace Common.UI
 
         public void OnEndDrag(PointerEventData data)
         {
+            _isDragging = false;
+
             _onDragEnded.Invoke(data);
             _cache = data;
-
-            _isDragging = false;
 
             UseIfNecessary(data);
         }
