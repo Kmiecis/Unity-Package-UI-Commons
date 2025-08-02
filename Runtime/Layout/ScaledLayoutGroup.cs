@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Common.UI
 {
     [Preserve]
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(ScaledLayoutGroup))]
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Scaled Layout Group")]
     public class ScaledLayoutGroup : HorizontalOrVerticalLayoutGroup
     {
         public enum EType

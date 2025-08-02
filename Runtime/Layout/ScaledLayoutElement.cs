@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Common.UI
 {
     [Preserve]
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(ScaledLayoutElement))]
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Scaled Layout Element")]
     public class ScaledLayoutElement : LayoutElement
     {
         [SerializeField] protected float _minWidthScale = -1.0f;

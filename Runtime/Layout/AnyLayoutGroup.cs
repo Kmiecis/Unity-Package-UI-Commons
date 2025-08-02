@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.UI;
 
 namespace Common.UI
 {
+    [Preserve]
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Any Layout Group")]
     public class AnyLayoutGroup : HorizontalOrVerticalLayoutGroup
     {
         public enum EType

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Common.UI
 {
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(PointerPressHandler))]
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Press Handler")]
     public class PointerPressHandler : PointerHandlerBase, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onPressBegan = new UnityEvent<PointerEventData>();

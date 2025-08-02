@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Common.UI
 {
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(PointerHoverHandler))]
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Hover Handler")]
     public class PointerHoverHandler : PointerHandlerBase, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onHoverBegan = new UnityEvent<PointerEventData>();

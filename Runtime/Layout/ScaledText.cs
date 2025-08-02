@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Common.UI
 {
     [Preserve]
-    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/" + nameof(ScaledText))]
+    [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Scaled Text")]
     public class ScaledText : Text
     {
         [SerializeField] protected float _fontScale;
