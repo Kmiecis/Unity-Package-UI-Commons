@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 namespace Common.UI
 {
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Hover Handler")]
-    public class PointerHoverHandler : PointerHandlerBase, IPointerEnterHandler, IPointerExitHandler
+    public class PointerHoverHandler : PointerHandlerBase, IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onHoverBegan = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onHovering = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onHoverEnded = new UnityEvent<PointerEventData>();
 
         private bool _isHovering;
@@ -15,6 +16,9 @@ namespace Common.UI
 
         public UnityEvent<PointerEventData> OnHoverBegan
             => _onHoverBegan;
+
+        public UnityEvent<PointerEventData> OnHovering
+            => _onHovering;
 
         public UnityEvent<PointerEventData> OnHoverEnded
             => _onHoverEnded;
@@ -27,6 +31,14 @@ namespace Common.UI
             _isHovering = true;
 
             _onHoverBegan.Invoke(data);
+            _cache = data;
+
+            UseIfNecessary(data);
+        }
+
+        public void OnPointerMove(PointerEventData data)
+        {
+            _onHovering.Invoke(data);
             _cache = data;
 
             UseIfNecessary(data);
@@ -45,6 +57,7 @@ namespace Common.UI
         public void RemoveAllListeners()
         {
             _onHoverBegan.RemoveAllListeners();
+            _onHovering.RemoveAllListeners();
             _onHoverEnded.RemoveAllListeners();
         }
 
