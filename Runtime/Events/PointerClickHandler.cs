@@ -12,20 +12,20 @@ namespace Common.UI
         public UnityEvent<PointerEventData> OnClicked
             => _onClicked;
 
-        public void OnPointerClick(PointerEventData data)
+        public virtual void OnPointerClick(PointerEventData data)
         {
             _onClicked.Invoke(data);
 
             UseIfNecessary(data);
         }
 
-        public void RemoveAllListeners()
+        public virtual void RemoveAllListeners()
         {
             _onClicked.RemoveAllListeners();
         }
 
         #region Unity
-        private void OnDestroy()
+        protected void OnDestroy()
         {
             RemoveAllListeners();
         }

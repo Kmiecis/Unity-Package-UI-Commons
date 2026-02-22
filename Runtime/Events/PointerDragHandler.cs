@@ -11,8 +11,8 @@ namespace Common.UI
         [SerializeField] protected UnityEvent<PointerEventData> _onDragging = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onDragEnded = new UnityEvent<PointerEventData>();
 
-        private bool _isDragging;
-        private PointerEventData _cache;
+        protected bool _isDragging;
+        protected PointerEventData _cache;
 
         public UnityEvent<PointerEventData> OnDragBegan
             => _onDragBegan;
@@ -26,7 +26,7 @@ namespace Common.UI
         public bool IsDragging
             => _isDragging;
 
-        public void OnBeginDrag(PointerEventData data)
+        public virtual void OnBeginDrag(PointerEventData data)
         {
             _isDragging = true;
 
@@ -36,7 +36,7 @@ namespace Common.UI
             UseIfNecessary(data);
         }
 
-        public void OnDrag(PointerEventData data)
+        public virtual void OnDrag(PointerEventData data)
         {
             _onDragging.Invoke(data);
             _cache = data;
@@ -44,7 +44,7 @@ namespace Common.UI
             UseIfNecessary(data);
         }
 
-        public void OnEndDrag(PointerEventData data)
+        public virtual void OnEndDrag(PointerEventData data)
         {
             _isDragging = false;
 
@@ -54,7 +54,7 @@ namespace Common.UI
             UseIfNecessary(data);
         }
 
-        public void RemoveAllListeners()
+        public virtual void RemoveAllListeners()
         {
             _onDragBegan.RemoveAllListeners();
             _onDragging.RemoveAllListeners();
@@ -62,7 +62,7 @@ namespace Common.UI
         }
 
         #region Unity
-        private void OnDisable()
+        protected void OnDisable()
         {
             if (_isDragging)
             {
@@ -70,7 +70,7 @@ namespace Common.UI
             }
         }
 
-        private void OnDestroy()
+        protected void OnDestroy()
         {
             RemoveAllListeners();
         }

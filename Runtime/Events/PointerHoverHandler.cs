@@ -11,8 +11,8 @@ namespace Common.UI
         [SerializeField] protected UnityEvent<PointerEventData> _onHovering = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onHoverEnded = new UnityEvent<PointerEventData>();
 
-        private bool _isHovering;
-        private PointerEventData _cache;
+        protected bool _isHovering;
+        protected PointerEventData _cache;
 
         public UnityEvent<PointerEventData> OnHoverBegan
             => _onHoverBegan;
@@ -26,35 +26,38 @@ namespace Common.UI
         public bool IsHovering
             => _isHovering;
 
-        public void OnPointerEnter(PointerEventData data)
+        public virtual void OnPointerEnter(PointerEventData data)
         {
             _isHovering = true;
 
             _onHoverBegan.Invoke(data);
-            _cache = data;
 
             UseIfNecessary(data);
+            
+            _cache = data;
         }
 
-        public void OnPointerMove(PointerEventData data)
+        public virtual void OnPointerMove(PointerEventData data)
         {
             _onHovering.Invoke(data);
-            _cache = data;
 
             UseIfNecessary(data);
+
+            _cache = data;
         }
 
-        public void OnPointerExit(PointerEventData data)
+        public virtual void OnPointerExit(PointerEventData data)
         {
             _isHovering = false;
 
             _onHoverEnded.Invoke(data);
-            _cache = data;
 
             UseIfNecessary(data);
+
+            _cache = data;
         }
 
-        public void RemoveAllListeners()
+        public virtual void RemoveAllListeners()
         {
             _onHoverBegan.RemoveAllListeners();
             _onHovering.RemoveAllListeners();
@@ -62,7 +65,7 @@ namespace Common.UI
         }
 
         #region Unity
-        private void OnDisable()
+        protected void OnDisable()
         {
             if (_isHovering)
             {
@@ -70,7 +73,7 @@ namespace Common.UI
             }
         }
 
-        private void OnDestroy()
+        protected void OnDestroy()
         {
             RemoveAllListeners();
         }
