@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Common.UI
 {
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Hover Handler")]
-    public class PointerHoverHandler : PointerHandlerBase, IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler
+    public class PointerHoverHandler : MonoBehaviour, IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onHoverBegan = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onHovering = new UnityEvent<PointerEventData>();
@@ -32,16 +32,12 @@ namespace Common.UI
 
             _onHoverBegan.Invoke(data);
 
-            UseIfNecessary(data);
-            
             _cache = data;
         }
 
         public virtual void OnPointerMove(PointerEventData data)
         {
             _onHovering.Invoke(data);
-
-            UseIfNecessary(data);
 
             _cache = data;
         }
@@ -51,8 +47,6 @@ namespace Common.UI
             _isHovering = false;
 
             _onHoverEnded.Invoke(data);
-
-            UseIfNecessary(data);
 
             _cache = data;
         }

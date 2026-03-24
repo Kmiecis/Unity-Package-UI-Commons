@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Common.UI
 {
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Click Handler")]
-    public class PointerClickHandler : PointerHandlerBase, IPointerClickHandler
+    public class PointerClickHandler : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onClicked = new UnityEvent<PointerEventData>();
 
@@ -15,8 +15,6 @@ namespace Common.UI
         public virtual void OnPointerClick(PointerEventData data)
         {
             _onClicked.Invoke(data);
-
-            UseIfNecessary(data);
         }
 
         public virtual void RemoveAllListeners()

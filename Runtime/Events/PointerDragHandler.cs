@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Common.UI
 {
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Drag Handler")]
-    public class PointerDragHandler : PointerHandlerBase, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class PointerDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onDragBegan = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onDragging = new UnityEvent<PointerEventData>();
@@ -31,17 +31,15 @@ namespace Common.UI
             _isDragging = true;
 
             _onDragBegan.Invoke(data);
-            _cache = data;
 
-            UseIfNecessary(data);
+            _cache = data;
         }
 
         public virtual void OnDrag(PointerEventData data)
         {
             _onDragging.Invoke(data);
-            _cache = data;
 
-            UseIfNecessary(data);
+            _cache = data;
         }
 
         public virtual void OnEndDrag(PointerEventData data)
@@ -49,9 +47,8 @@ namespace Common.UI
             _isDragging = false;
 
             _onDragEnded.Invoke(data);
-            _cache = data;
 
-            UseIfNecessary(data);
+            _cache = data;
         }
 
         public virtual void RemoveAllListeners()

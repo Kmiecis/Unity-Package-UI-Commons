@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace Common.UI
 {
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Press Handler")]
-    public class PointerPressHandler : PointerHandlerBase, IPointerDownHandler, IPointerUpHandler
+    public class PointerPressHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] protected UnityEvent<PointerEventData> _onPressBegan = new UnityEvent<PointerEventData>();
         [SerializeField] protected UnityEvent<PointerEventData> _onPressEnded = new UnityEvent<PointerEventData>();
@@ -27,19 +27,17 @@ namespace Common.UI
             _isPressed = true;
 
             _onPressBegan.Invoke(data);
-            _cache = data;
 
-            UseIfNecessary(data);
+            _cache = data;
         }
 
         public void OnPointerUp(PointerEventData data)
         {
-            _onPressEnded.Invoke(data);
-            _cache = data;
-
             _isPressed = false;
 
-            UseIfNecessary(data);
+            _onPressEnded.Invoke(data);
+
+            _cache = data;
         }
 
         public void RemoveAllListeners()
