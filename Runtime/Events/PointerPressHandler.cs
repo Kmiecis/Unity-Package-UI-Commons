@@ -7,17 +7,17 @@ namespace Common.UI
     [AddComponentMenu(nameof(Common) + "/" + nameof(UI) + "/Pointer Press Handler")]
     public class PointerPressHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        [SerializeField] protected UnityEvent<PointerEventData> _onPressBegan = new UnityEvent<PointerEventData>();
-        [SerializeField] protected UnityEvent<PointerEventData> _onPressEnded = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onPress = new UnityEvent<PointerEventData>();
+        [SerializeField] protected UnityEvent<PointerEventData> _onRelease = new UnityEvent<PointerEventData>();
 
         private bool _isPressed;
         private PointerEventData _cache;
 
-        public UnityEvent<PointerEventData> OnPressBegan
-            => _onPressBegan;
+        public UnityEvent<PointerEventData> OnPress
+            => _onPress;
 
-        public UnityEvent<PointerEventData> OnPressEnded
-            => _onPressEnded;
+        public UnityEvent<PointerEventData> OnRelease
+            => _onRelease;
 
         public bool IsPressed
             => _isPressed;
@@ -26,7 +26,7 @@ namespace Common.UI
         {
             _isPressed = true;
 
-            _onPressBegan.Invoke(data);
+            _onPress.Invoke(data);
 
             _cache = data;
         }
@@ -35,15 +35,15 @@ namespace Common.UI
         {
             _isPressed = false;
 
-            _onPressEnded.Invoke(data);
+            _onRelease.Invoke(data);
 
             _cache = data;
         }
 
         public void RemoveAllListeners()
         {
-            _onPressBegan.RemoveAllListeners();
-            _onPressEnded.RemoveAllListeners();
+            _onPress.RemoveAllListeners();
+            _onRelease.RemoveAllListeners();
         }
 
         #region Unity
