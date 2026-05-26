@@ -1,5 +1,4 @@
-﻿using Common.UI.Extensions;
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;

@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Common.UI.Extensions
+namespace Common.UI
 {
     public static class ButtonExtensions
     {
